@@ -1,0 +1,7 @@
+{
+  "name": "what-song",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Mikhail Guskov <meguskov@gmail.com>",
+  "license": "MIT"
+}
