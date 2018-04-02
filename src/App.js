@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
-import Layout from './components/Layout';
+import { connect } from 'react-redux';
+import Routes from './Routes';
 import './index.css';
 
-class App extends Component {
-  render() {
-    return <Layout title="What song?" />;
-  }
-}
+@connect(null, null)
+export default class App extends Component {
+    componentDidMount() {
+        //this.props.connectToProxy();
+    }
 
-export default App;
+    componentWillUnmount() {
+        //this.props.disconnectFromProxy();
+    }
+
+    render() {
+        return <Routes />;
+    }
+}
