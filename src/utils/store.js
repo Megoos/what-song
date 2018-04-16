@@ -1,9 +1,9 @@
-import {applyMiddleware, createStore} from 'redux';
-import {createLogger} from 'redux-logger';
+import { applyMiddleware, createStore, compose } from 'redux';
 import promiseMiddleware from 'redux-promise-middleware';
 import thunk from 'redux-thunk';
 import reducers from '../reducers/index';
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const getMiddleware = () => {
     const commonMiddleware = [thunk, promiseMiddleware()];
@@ -12,7 +12,7 @@ const getMiddleware = () => {
         return applyMiddleware(...commonMiddleware);
     }
 
-    return applyMiddleware(...commonMiddleware, createLogger({collapsed: true}));
+    return applyMiddleware(...commonMiddleware);
 };
 
-export default createStore(reducers, getMiddleware());
+export default createStore(reducers, composeEnhancers(getMiddleware()));
